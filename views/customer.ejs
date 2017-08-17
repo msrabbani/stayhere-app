@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Customers</title>
+    </head>
+    <body>
+            <table style="width:50%" border="1">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                <%dataCus.forEach(d => {%>
+                    <tr>
+                        <td><%=d.id%></td>
+                        <td><%=d.name%></td>
+                        <td><%=d.username%></td>
+                        <td><%=d.address%></td>
+                        <td><%=d.phone%></td>
+                        <td><%=d.email%></td>
+                        <td><a href="/customers/edit/<%=d.id%>">Edit</a></td>
+                        <td><a href="/customers/delete/<%=d.id%>">Delete</a></td>
+                    </tr>
+                    <%})%>
+                </table>
+
+<h2>
+    <form action="/customers" method="post">
+         <fieldset>
+              <legend>Add Customer:</legend>
+              <input name="name" type="text" placeholder="name"><br>
+              <input name="username" type="text" placeholder="username"><br>
+              <input name="address" type="text" placeholder="address"><br>
+              <input name="phone" type="text"placeholder="phone number"><br>
+              <input name="email" type="text" placeholder="email"><br><br>
+              <input type="submit" value="Add Customer">
+         </fieldset>
+    </form>
+
+</h2>
+    </body>
+</html>

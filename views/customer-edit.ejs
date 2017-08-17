@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Edit Customer</title>
+    </head>
+    <body>
+        <h1>Edit Customer</h1>
+      <br>
+        <form action="/customers/edit/<%=dataCus.id%>" method="post">
+          Name :<br>
+          <input type="text" name="name" value="<%=dataCus.name%>">
+          <br>
+          Username :<br>
+          <input type="text" name="username" value="<%=dataCus.username%>">
+          <br>
+          Address :<br>
+          <input type="text" name="address" value="<%=dataCus.address%>">
+          <br>
+          Phone :<br>
+          <input type="text" name="phone" value="<%=dataCus.phone%>">
+          <br>
+          Email :<br>
+          <input type="text" name="email" value="<%=dataCus.email%>">
+          <br><br>
+          <input type="submit" value="Edit customer">
+        </form>
+    </body>
+</html>
