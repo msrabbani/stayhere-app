@@ -9,13 +9,15 @@ router.get('/', (req,res)=>{
     })
 })
 
-router.post('/customers', (req,res)=>{
+router.post('/', (req,res)=>{
     model.Customer.create({
         name:req.body.name,
         username:req.body.username,
         address:req.body.address,
         phone:req.body.phone,
-        email:req.body.email
+        email:req.body.email,
+        createdAt: new Date(),
+        updatedAt: new Date()
     }).then(()=>{
         res.redirect('/customers')
     })

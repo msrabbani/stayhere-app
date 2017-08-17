@@ -8,19 +8,13 @@ app.use(bodyParser.urlencoded({ extended : false}))
 app.use(bodyParser.json())
 
 let index = require("./router/index-router");
-
-// let house = require("./router/house-router");
 let customer = require("./router/customer-router");
-
-app.use('/', index)
-// app.use('/houses', house)
-app.use('/customers', customer)
 let house = require("./router/house-router");
-// let customer = require("./router/customer-router");
 
 app.use('/', index)
+app.use('/customers', customer)
 app.use('/houses', house)
-// app.use('/customers', customer)
+
 
 
 

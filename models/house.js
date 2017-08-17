@@ -7,12 +7,16 @@ module.exports = function(sequelize, DataTypes) {
     phone: DataTypes.STRING,
     email: DataTypes.STRING,
     price: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
+}, {
+    hooks: {
+        beforeCreate: (models) => {
+            let tempPrice = 'IDR '
+            models.price = tempPrice + models.price
+        }
     }
-  });
+});
+  House.associate = (models) => {
+      House.belongsToMany(models.Customer, {through: "CustomerHouse"});
+  }
   return House;
 };
