@@ -6,12 +6,9 @@ module.exports = function(sequelize, DataTypes) {
     address: DataTypes.STRING,
     phone: DataTypes.STRING,
     email: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
   });
+  Customer.associate = (models) => {
+      Customer.belongsToMany(models.House, {through: "CustomerHouse"});
+  }
   return Customer;
 };
