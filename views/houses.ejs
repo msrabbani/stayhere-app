@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Guesthouse</title>
+  </head>
+  <body>
+    <h1>List Guesthouse</h1>
+    <table border="1">
+        <tbody>
+          <th>No</th>
+          <th>Nama Guesthouse</th>
+          <th>Alamat</th>
+          <th>Kota</th>
+          <th>Email</th>
+          <th>Telp. Number</th>
+          <th>Harga/malam</th>
+          <th>Options</th>
+          <% var i=1; dataHouse.forEach(d=> {%>
+          <tr>
+            <td><%=i++%></td>
+            <td><%=d.name%></td>
+            <td><%=d.address%></td>
+            <td><%=d.city%></td>
+            <td><%=d.email%></td>
+            <td><%=d.phone%></td>
+            <td><%=d.price%></td>
+            <td><a href="houses/<%=d.id%>/addsubject">Add Subject</a></td>
+            <td><a href="houses/edit/<%=d.id%>">Edit</a> |
+              <a href="houses/delete/<%=d.id%>" onclick="return confirm('delete this student?')">Delete</a></td>
+          </tr>
+          <%})%>
+        </tbody>
+      </table>
+      <br><br>
+      <form class="" action="/houses" method="post">
+      <fieldset>
+        <legend>Add House</legend>
+        <input type="text" name="name" placeholder="guesthouse name"><br>
+        <input type="text" name="address" placeholder="alamat"><br>
+        <input type="text" name="city" placeholder="nama kota"><br>
+        <input type="text" name="email" placeholder="email"><br>
+        <input type="text" name="phone" placeholder="telp number"><br>
+        <input type="text" name="price" placeholder="harga"><br>
+        <input type="submit" value="Add">
+      </fieldset>
+    </form>
+  </body>
+</html>

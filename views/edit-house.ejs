@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form class="" action="/houses/edit/<%=dataHouse.id%>" method="post">
+    <fieldset>
+      <legend><b>Edit House</b></legend>
+      <input type="text" name="name" value="<%=dataHouse.name%>"><br>
+      <input type="text" name="address" value="<%=dataHouse.address%>"><br>
+      <input type="text" name="city" value="<%=dataHouse.city%>"><br>
+      <input type="text" name="email" value="<%=dataHouse.email%>"><br>
+      <input type="text" name="phone" value="<%=dataHouse.phone%>"><br>
+      <input type="text" name="price" value="<%=dataHouse.price%>"><br>
+      <input type="submit" value="Add">
+    </fieldset>
+  </form>
+  </body>
+</html>
