@@ -4,6 +4,7 @@
   "description": "pair-project",
   "main": "index.js",
   "scripts": {
+    "start":"node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +19,7 @@
   "homepage": "https://github.com/msrabbani/stayhere-app#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "bulma": "^0.5.1",
     "ejs": "^2.5.7",
     "express": "^4.15.4",
     "pg": "^7.1.2",

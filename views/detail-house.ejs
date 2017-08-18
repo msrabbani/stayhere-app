@@ -3,15 +3,22 @@
     <head>
         <meta charset="utf-8">
         <title>detail-house</title>
+        <%-include layout/navbar%>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.0/css/bulma.min.css">
     </head>
     <body>
-        <table style="width:50%" border="1">
-            <tr>
-                <th>GuestHouse</th>
-                <th>Address</th>
-                <th>City</th>
-                <th>Price</th>
-            </tr>
+        <center>
+        <h1 class="title"><strong>Guesthouse Detail</strong></h1>
+        <h2>
+            <table class="table">
+                <tr>
+                    <th>GuestHouse</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>Price</th>
+                </tr>
                 <tr>
                     <td><%=dataH.name%></td>
                     <td><%=dataH.address%></td>
@@ -19,48 +26,77 @@
                     <td><%=dataH.price%></td>
                 </tr>
             </table>
+        </h2>
             <br>
-          <form class="" action="/houses/detail/<%=dataH.id%>" method="post">
-            <fieldset>
-              <legend>add comment and rating</legend>
-              User : <select name="CustomerId">
-                  <%dataCos.forEach(dc=>{%>
-                    <option value="<%=dc.id%>"><%=dc.name%></option>
-                  <%})%>
-              </select>
-              <br>
-              Rating: <select name="rating">
-                  <option value=1>Jelek</option>
-                  <option value=2>Payah</option>
-                  <option value=3>Lumayan</option>
-                  <option value=4>Oke</option>
-                  <option value=5>Mantap</option>
-              </select><br>
+            <h3>
+                <form class="" action="/houses/detail/<%=dataH.id%>" method="post">
+                    <fieldset>
+                        <legend>add comment and rating</legend>
 
-              <textarea name=comment placeholder="beri komentar"></textarea><br>
-              <input type="submit" value="Add">
-              </fieldset>
-            </form>
+                        <div class="field has-addons has-addons-centered"><br>
+                            <label class="label">Customers :</label>
+                            <div class="control">
+                                <div class="select">
+                                    <select name="CustomerId">
+                                        <%dataCos.forEach(dc=>{%>
+                                            <option value="<%=dc.id%>"><%=dc.name%></option>
+                                            <%})%>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
 
-            <fieldset>
-              <legend>comment and rating</legend>
-              <table border="1">
-                  <tr>
-                      <th>Customers</th>
-                      <th>Comment</th>
-                      <th>Rating</th>
-                  </tr>
-                      <%dataCH.forEach(dch=>{%>
-                      <tr>
-                          <td><%=dch.name%></td>
-                          <td><%=dch.comment%></td>
-                          <td><%=dch.rating%></td>
-                      </tr>
-                      <%})%>
-              </table>
-              </fieldset>
+                            <div class="field has-addons has-addons-centered">
+                                <label class="label">Rating :</label>
+                                <div class="control">
+                                    <div class="select">
+                                        <select name="rating">
+                                            <option value=1>Jelek</option>
+                                            <option value=2>Payah</option>
+                                            <option value=3>Lumayan</option>
+                                            <option value=4>Oke</option>
+                                            <option value=5>Mantap</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
 
-
+                            <div class="field has-addons has-addons-centered">
+                                <label class="label">Comment :</label>
+                                <div class="control">
+                                    <textarea class="textarea" name="comment" placeholder="Comment here"></textarea>
+                                </div>
+                            </div>
+                            <div class="field is-grouped has-addons has-addons-centered" >
+                              <div class="control">
+                                <button class="button is-primary" type="submit" >Submit</button>
+                              </div>
+                            </div>
+                            <!-- <input type="suSbmit" value="Add"> -->
+                        </fieldset>
+                    </form>
+            </h3>
+            <br>
+            <h4>
+                <fieldset>
+                    <legend>comment and rating</legend>
+                    <table class="table is-striped">
+                        <tr>
+                            <th>Customers</th>
+                            <th>Comment</th>
+                            <th>Rating</th>
+                        </tr>
+                        <%dataCH.forEach(dch=>{%>
+                            <tr>
+                                <td><%=dch.name%></td>
+                                <td><%=dch.comment%></td>
+                                <td><%=dch.rating%></td>
+                            </tr>
+                            <%})%>
+                        </table>
+                    </fieldset>
+            </h4>
+        </center>
             <a href="/houses">back</a>
     </body>
 </html>

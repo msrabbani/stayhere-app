@@ -18,4 +18,4 @@ app.use('/houses', house)
 
 
 
-app.listen(3003, function(){console.log("nyabung ka express,port 3003")});
+app.listen(process.env.PORT||3000);

@@ -3,43 +3,55 @@
   <head>
     <meta charset="utf-8">
     <title>Guesthouse</title>
+    <%-include layout/navbar%>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.0/css/bulma.min.css">
   </head>
   <body>
-    <h1>List Guesthouse</h1>
-    <table border="1">
-        <tbody>
-          <th>No</th>
-          <th>Nama Guesthouse</th>
-          <th>Alamat</th>
-          <th>Kota</th>
-          <th>Email</th>
-          <th>Telp. Number</th>
-          <th>Harga/malam</th>
-          <th>AVG Rating</th>
-          <th>Detail</th>
-          <th>Options</th>
-
-          <% var i=1; dataHouse.forEach(d=> {%>
-          <tr>
-            <td><%=i++%></td>
-            <td><%=d.name%></td>
-            <td><%=d.address%></td>
-            <td><%=d.city%></td>
-            <td><%=d.email%></td>
-            <td><%=d.phone%></td>
-            <td><%=d.price%></td>
-            <%if(d.avg_rating) {%>
-                <td><%=d.avg_rating%></td>
-            <%}else {%>
-                <td>No rating</td>
-            <%}%>
-            <td><a href="houses/detail/<%=d.id%>">Show Detail</a></td>
-            <td><a href="houses/edit/<%=d.id%>">Edit</a>
-            <a href="houses/delete/<%=d.id%>" onclick="return confirm('delete this student?')">Delete</a></td>
-          </tr>
-          <%})%>
-        </tbody>
-      </table>
+      <center>
+      <h1 class="title"><strong>Guesthouse</strong></h1>
+    <h1>
+        <section class="section">
+            <div class="container">
+            <h2><br>
+          <table class="table">
+              <tr>
+                  <th>No</th>
+                  <th>Nama Guesthouse</th>
+                  <th>Alamat</th>
+                  <th>Kota</th>
+                  <th>Email</th>
+                  <th>Telp. Number</th>
+                  <th>Harga/malam</th>
+                  <th>AVG Rating</th>
+                  <th>Detail</th>
+                  <th>Options</th>
+              </tr>
+                      <% var i=1; dataHouse.forEach(d=> {%>
+                          <tr>
+                              <td><%=i++%></td>
+                              <td><%=d.name%></td>
+                              <td><%=d.address%></td>
+                              <td><%=d.city%></td>
+                              <td><%=d.email%></td>
+                              <td><%=d.phone%></td>
+                              <td><%=d.price%></td>
+                              <%if(d.avg_rating) {%>
+                                  <td><%=d.avg_rating%></td>
+                                  <%}else {%>
+                                      <td>No rating</td>
+                                      <%}%>
+                                      <td><a href="houses/detail/<%=d.id%>">Show Detail</a></td>
+                                      <td><a href="houses/edit/<%=d.id%>">Edit</a>
+                                          <a href="houses/delete/<%=d.id%>" onclick="return confirm('delete this house?')">Delete</a></td>
+                                      </tr>
+                                      <%})%>
+                                  </tbody>
+                              </table>
+                          </div>
+                      </section>
+    </h1>
       <br><br>
       <form class="" action="/houses" method="post">
       <fieldset>
@@ -53,6 +65,7 @@
         <input type="submit" value="Add">
       </fieldset>
     </form>
+</center>    
     <a href="/">back</a>
   </body>
 </html>

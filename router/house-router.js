@@ -43,7 +43,9 @@ const model = require('../models')
 // })
 
 router.get('/', (req,res) => {
-    model.House.findAll()
+    model.House.findAll({
+        order:[['city','ASC']]
+    })
     .then(data_house => {
         model.CustomerHouse.findAll()
         .then(data_rating => {
@@ -135,17 +137,26 @@ router.post('/detail/:id', (req,res)=>{
     })
     .then(() => {
         model.House.findById(req.params.id)
-        .then(row1=>{
+        .then(data_house=>{
             model.Customer.findAll()
-            .then(row2=>{
+            .then(data_cus=>{
                 model.CustomerHouse.findAll({
                     where: {
                         HouseId: req.params.id
                     }
                 })
-                .then(row3=>{
-                    res.render('detail-house', {dataH:row1, dataCos:row2, dataCH:row3})
-               })
+                .then(data_ch=>{
+                    for (var i = 0; i < data_ch.length; i++) {
+                        for (var j = 0; j < data_cus.length; j++) {
+                            if (data_ch[i].CustomerId === data_cus[j].id) {
+                                data_ch[i]['name'] = data_cus[j].username
+                            }
+                        }
+                    }
+                    // console.log('===>',JSON.stringify(row3,null,2));
+                    res.render('detail-house', {dataH:data_house, dataCos:data_cus, dataCH:data_ch})
+                })
+
             })
         })
     })
